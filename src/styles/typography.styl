@@ -1,0 +1,81 @@
+@require 'variables'
+
+for i in (1..11)
+  .f-{i}
+    font-size: lookup('font-' + i)
+
+.text-short 
+  max-width: 20em;
+.text-medium 
+  max-width: 28em;
+.text-long 
+  max-width: 35em;
+
+.line-height-short 
+  line-height: 1
+.line-height-medium 
+  line-height: 1.5
+.line-height-long 
+  line-height: 2
+
+.uppercase 
+  text-transform: uppercase
+  letter-spacing: 0.05em
+.bold 
+  font-weight: 600
+
+
+.text-center 
+  text-align: center
+.text-right 
+  text-align: right
+
+
+.font-heading
+  font-family font-family-heading
+.font-body
+  font-family font-family-body
+
+body 
+  font-family: font-family-body
+  font-size: font-4
+  color: font-color
+
+.control
+  color: font-color
+
+h1, h2, h3, h4, h5, h6 
+  font-family: font-family-heading
+  font-weight: 400
+  color: font-color
+
+h1 
+  font-size: font-10
+h2 
+  font-size: font-9
+h3 
+  font-size: font-8
+h4 
+  font-size: font-7
+h5 
+  font-size: font-6
+h6 
+  font-size: font-5
+
+p 
+  line-height: 1.5
+
+input, select, textarea, button
+  font-family: inherit
+  font-size: inherit
+
+a
+  color: c-primary
+  font-weight: 600
+  letter-spacing: 0.7px
+  font-size: font-4
+  transition: color 0.2s ease 0s, background-color 0.2s ease 0s, border-color 0.2s ease 0s
+  &:hover
+    color: c-primary-d-1
+  &:active
+    color: c-primary-d-2

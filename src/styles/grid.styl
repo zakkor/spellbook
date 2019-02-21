@@ -1,0 +1,30 @@
+@require 'variables'
+@require 'mixins'
+
+.col
+  display: block
+  flex-basis 0
+  flex-grow 1
+  flex-shrink 1
+
++tablet-and-up()
+  .row
+    display flex
+
++desktop-and-up()
+  .container
+    margin-right auto
+    margin-left auto
+    position relative
+    max-width: desktop
+    width: desktop
+
++widescreen-and-up()
+  .container
+    max-width: widescreen
+    width: widescreen
+
++fullhd-and-up()
+  .container
+    max-width: fullhd
+    width: fullhd

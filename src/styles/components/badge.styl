@@ -1,0 +1,16 @@
+_badge-color(col)
+  &.{col}
+    background-color lookup('c-' + col + '-l-2')
+    color lookup('c-' + col + '-d-3')
+
+
+.badge
+  display inline-block
+  border-radius size-5
+  padding size-1 size-3
+  font-weight bold
+
+  _badge-color('primary')
+  _badge-color('success')
+  _badge-color('warning')
+  _badge-color('danger')

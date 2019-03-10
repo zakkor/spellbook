@@ -1,4 +1,24 @@
-@require 'mixins'
+/// Spacing
+
+size-0 ?= 0
+size-1 ?= 4px
+size-2 ?= 8px
+size-3 ?= 12px
+size-4 ?= 16px
+size-5 ?= 24px
+size-6 ?= 32px
+size-7 ?= 48px
+size-8 ?= 64px
+size-9 ?= 96px
+size-10 ?= 128px
+size-11 ?= 192px
+size-12 ?= 256px
+size-13 ?= 384px
+size-14 ?= 512px
+size-15 ?= 640px
+size-16 ?= 768px
+
+///
 
 properties = {
   p: 'padding'
@@ -13,54 +33,60 @@ directions = {
   r: 'right'
 }
 
-for i in (0..16)
-  val = lookup('size-' + i)
+spacing-classes(bp)
+  isResponsive = bp != ''
 
-  for propKey, propVal in properties
-    for dirKey, dirVal in directions
-      if dirKey == 'all'
-        .{propKey}-{i}
-          {propVal}: val
-        +tablet-and-up()
-          .{propKey}-large-{i}
+  if bp != ''
+    bp += '-'
+
+  for i in (0..16)
+    val = lookup('size-' + i)
+
+    important = isResponsive || i == 0
+
+    if important
+      val = val !important
+
+    for propKey, propVal in properties
+      for dirKey, dirVal in directions
+        if dirKey == 'all'
+          .{bp}{propKey}-{i}
             {propVal}: val
-        +tablet-up-until()
-          .{propKey}-small-{i}
-            {propVal}: val
-      else
-        .{propKey}{dirKey}-{i}
-          {propVal}-{dirVal}: val
-        +tablet-and-up()
-          .{propKey}{dirKey}-large-{i}
-            {propVal}-{dirVal}: val
-        +tablet-up-until()
-          .{propKey}{dirKey}-small-{i}
+        else
+          .{bp}{propKey}{dirKey}-{i}
             {propVal}-{dirVal}: val
 
+      // vertical
+      .{bp}{propKey}v-{i}
+        {propVal}-top: val
+        {propVal}-bottom: val
 
-    // vertical
-    .{propKey}v-{i}
-      {propVal}-top: val
-      {propVal}-bottom: val
+      // horizontal
+      .{bp}{propKey}h-{i}
+        {propVal}-left: val
+        {propVal}-right: val
 
-    // horizontal
-    .{propKey}h-{i}
-      {propVal}-left: val
-      {propVal}-right: val
+    .{bp}max-w-{i}
+      max-width: val
 
-  .max-w-{i}
-    max-width: val
+    .{bp}max-h-{i}
+      max-height: val
 
-  .max-h-{i}
-    max-height: val
+    .{bp}w-{i}
+      width: val
 
-  .w-{i}
-    width: val
+    .{bp}h-{i}
+      height: val
 
-  .h-{i}
-    height: val
+
+spacing-classes('')
+for bp in ('sm' 'md' 'lg' 'xl')
+  +up-until(bp)
+    spacing-classes(bp)
 
 .ml-auto
+  margin-left: auto
+.mr-auto
   margin-left: auto
 
 .height-100

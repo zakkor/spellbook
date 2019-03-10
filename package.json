@@ -1,10 +1,11 @@
 {
-  "name": "spellbook-components",
+  "name": "@grimoire/spellbook",
   "version": "0.1.0",
   "private": true,
+  "main": "./dist/spellbook.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue build --target lib --name spellbook src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

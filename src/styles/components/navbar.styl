@@ -1,0 +1,210 @@
+navbar-links-border-bottom-width = 3px
+
+.navbar
+  display flex
+  flex-direction row
+  align-items center
+  // border-bottom 1px solid c-neutral-l-2
+  background-color c-neutral-l-4
+  width 100%
+  padding 0 size-5
+
+  .container
+    width 100%
+
+  .title
+    align-self center
+    line-height 100px
+    display inline
+    transition background-color ease 0.3s
+    text-decoration none
+    color c-neutral-d-3
+    font-weight 400
+    &:hover
+      background-color c-neutral-l-3
+  
+  .controls
+    // width 100%
+    display flex
+    min-height 100px
+
+  .links
+    -webkit-overflow-scrolling: touch
+    align-items stretch
+    display flex
+    font-size 1rem
+    justify-content space-between
+    white-space nowrap
+
+    a
+      cursor pointer
+      text-decoration none
+      align-items: center
+      color: c-neutral-d-3
+      display: flex
+      justify-content: center
+      padding: 1em 1em
+      vertical-align: top
+      height 100%
+
+      &:hover
+        color: c-primary-d-1
+
+    li
+      display block
+      position relative
+      flex-grow 1
+      flex-basis 0
+      transition background-color ease 0.3s, border-color ease 0.3s
+
+      border-bottom-color: transparent
+      border-bottom-style: solid
+      border-bottom-width: navbar-links-border-bottom-width
+
+      height 100%
+      width 100%
+
+      &:hover
+        background-color c-neutral-l-3
+        border-bottom-style: solid
+        border-bottom-width: navbar-links-border-bottom-width
+        border-bottom-color: c-primary-l-1
+
+      &.is-active
+        border-bottom-color c-primary-d-1
+        color c-primary-d-1
+
+      &.dropdown
+        > a:after
+          content ' ›'
+          white-space pre
+
+        ul
+          top -1px 
+          left 100%
+          opacity 0
+          display none
+          position absolute
+          z-index 1
+
+          background-color c-neutral-l-4
+          border c-neutral-l-1 solid 1px
+          border-radius size-1
+        
+        li
+          border 0
+
+          a
+            justify-content start
+            min-width 240px
+
+        &:hover > ul
+          display block
+          opacity 1
+          animation fadeIn 0.1s
+
+    > ul > .dropdown
+      > ul
+        margin-top navbar-links-border-bottom-width
+        border-top-left-radius 0
+        border-top-right-radius 0
+      &:hover > ul
+        top 100%
+        left 0
+
+    ul
+      align-items center
+      display flex
+      flex-grow 1
+      flex-shrink 0
+      justify-content flex-start
+
+// Responsive
+.collapse
+  display none
+  align-self center
+
++sm-up-until()
+  .collapse
+    // order 2
+    display inline
+
+  .navbar
+    .links
+      display none
+    .controls
+      width 100%
+  .navbar.responsive
+    .links > ul
+      > li.is-active, > li, > li:hover
+        border-bottom-width 1px
+        ul
+          margin-top 1px
+
+    .container
+      flex-direction column
+      width 100%
+    .links
+      // order 3
+      display flex
+      flex-direction column
+      margin-left 0
+      margin-bottom size-5
+      width 100%
+      a
+        justify-content flex-start
+      ul
+        flex-direction column
+
+      .dropdown ul
+        width 100%
+        top 100%
+        left 0
+        border-top-left-radius 0
+        border-top-right-radius 0
+    .collapse
+      // order 2
+      // align-self flex-start
+
+
+@keyframes fadeIn {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950)
+easeOutBack   = cubic-bezier(0.250,-0.250, 0.750, 1.250)
+easing = easeOutBack
+duration = .5s
+
+dash-offset-cross = 0px
+cross-length = 950px
+
+svg.collapse
+  width 72px
+  height 72px
+  cursor pointer
+  transform translate3d(0,0,0)
+
+  path
+    fill none
+    transition stroke-dashoffset duration easing, stroke-dasharray duration easing
+    stroke-width 40px
+    stroke-linecap round
+    stroke c-neutral-d-3
+    stroke-dashoffset 0px
+    &#top
+    &#bottom
+      stroke-dasharray 240px cross-length
+    &#middle
+      stroke-dasharray 240px 240px
+
+.navbar.responsive
+  .collapse
+    path
+      &#top
+      &#bottom
+        stroke-dashoffset -650px
+        stroke-dashoffset -650px
+      &#middle
+        stroke-dashoffset -115px
+        stroke-dasharray 1px 220px

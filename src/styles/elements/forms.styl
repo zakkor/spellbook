@@ -1,0 +1,122 @@
+@require '../colors'
+@require '../spacing'
+
+input[type='text'],
+input[type='password'],
+input[type='tel'],
+input[type='search'],
+input[type='url'],
+input[type='number'],
+input[type='email'],
+input[type='date'],
+input[type='month'],
+input[type='week'],
+select,
+textarea
+  color: c-neutral-d-3
+  background-color: c-neutral-l-3
+
+  border: 1px solid c-neutral-l-2
+  padding: size-3
+  max-width: 100%
+  width: 100%
+  transition: border 0.2s ease 0s
+
+  &:focus
+    outline none
+    border: 1px solid c-primary-l-1
+
+  &.valid
+    border-color c-success-l-1
+
+  &.invalid
+    border-color c-danger-l-1
+
+  &::placeholder
+    color: c-neutral-d-1
+// label
+//   > input,
+//   > select,
+//   > textarea
+//     margin-top: size-3
+//     margin-bottom: size-5
+
+label .validation
+  display none
+
+label
+  > input.invalid, > input.valid
+    + .validation
+      margin-top size-3
+      display block
+
+  > input.invalid + .validation
+    color c-danger
+  > input.valid + .validation
+    color c-success
+
+label
+  > input, > select, > textarea
+    margin-top size-3
+  > *:last-child
+    margin-bottom: size-5
+
+select,
+input[type='date'],
+input[type='month'],
+input[type='week']
+  padding-top: 9px
+  padding-bottom: 8px
+
+// /*
+//  * File
+//  */
+@css {
+  .file input {
+    min-width: 14rem;
+    margin: 0;
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
+}
+
+.file 
+  position: relative;
+  display: inline-block;
+  margin-bottom: 24px;
+  height: 2.5rem;
+
+.file-custom 
+	position absolute
+	top 0
+	right 0
+	left 0
+	z-index 5
+	height 2.5rem
+	padding .5rem 1rem
+	line-height 1.5
+	color #555
+	background-color #fff
+	border .075rem solid #ddd
+	border-radius 8px
+	-webkit-user-select none
+	-moz-user-select none
+	-ms-user-select none
+	user-select none
+	&:after 
+		content "Choose file..."
+	&:before 
+		position absolute
+		top -.075rem
+		right -.075rem
+		bottom -.075rem
+		z-index 6
+		display block
+		content "Browse"
+		height 2.5rem
+		padding .5rem 1rem
+		line-height 1.5
+		color #555
+		background-color #eee
+		border .075rem solid #ddd
+		border-radius 0 .25rem .25rem 0

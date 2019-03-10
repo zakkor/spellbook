@@ -5,5 +5,10 @@ module.exports = {
         data: `@require '@/styles/color-schemes/blue.styl'`
       }
     }
+  },
+  configureWebpack: {
+    output: {
+      libraryExport: 'default'
+    }
   }
 }

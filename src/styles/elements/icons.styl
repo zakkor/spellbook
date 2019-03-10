@@ -1,0 +1,28 @@
+_icon-color(col)
+  &.{col}
+    fill lookup('c-' + col + '-d-1')
+    box-shadow 0px 0px 0px 5px lookup('c-' + col + '-l-2')
+
+
+.icon
+  border-radius 50%
+
+  _icon-color('primary')
+  _icon-color('success')
+  _icon-color('warning')
+  _icon-color('danger')
+
+  // &.warning
+  //   fill c-warning-d-1
+  //   box-shadow 0px 0px 0px 5px c-warning-l-2
+  
+
+// .icon-danger
+//   fill c-danger
+//   border-radius 50%
+//   box-shadow 0px 0px 0px 5px c-danger-l-3
+
+// .icon-warning
+//   fill c-warning-d-1
+//   border-radius 50%
+//   box-shadow 0px 0px 0px 5px c-warning-l-2

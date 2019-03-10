@@ -1,0 +1,24 @@
+_alert-color(col)
+  &.{col}
+    border 2px solid lookup('c-' + col)
+    background-color lookup('c-' + col + '-l-3')
+
+    p
+      color lookup('c-' + col + '-d-3')
+
+    for n in 1..6
+      h{n}
+        color lookup('c-' + col + '-d-3')
+        font-weight bold
+        font-family font-family-body
+
+
+
+.alert
+  border-radius 6px // TODO:
+  padding size-5
+
+  _alert-color('primary')
+  _alert-color('success')
+  _alert-color('warning')
+  _alert-color('danger')

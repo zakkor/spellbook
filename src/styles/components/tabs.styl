@@ -1,0 +1,39 @@
+@require '../colors'
+
+.tabs
+  -webkit-overflow-scrolling: touch
+  align-items: stretch
+  display: flex
+  font-size: 1rem
+  justify-content: space-between
+  overflow: hidden
+  overflow-x: auto
+  white-space: nowrap
+.tabs a
+  align-items: center
+  border-bottom-color: c-neutral-l-1
+  border-bottom-style: solid
+  border-bottom-width: 1px
+  color: c-neutral-d-3
+  display: flex
+  justify-content: center
+  margin-bottom: -1px
+  padding: 1em 1em
+  vertical-align: top
+.tabs a:hover
+  border-bottom-color: c-primary-l-2
+  color: c-primary-l-1
+.tabs li
+  display: block
+.tabs li.is-active a
+  border-bottom-color: c-primary-d-1
+  color: c-primary
+.tabs ul
+  align-items: center
+  border-bottom-color: c-neutral-l-1
+  border-bottom-style: solid
+  border-bottom-width: 1px
+  display: flex
+  flex-grow: 1
+  flex-shrink: 0
+  justify-content: flex-start

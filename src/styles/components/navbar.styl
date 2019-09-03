@@ -4,8 +4,8 @@ navbar-links-border-bottom-width = 3px
   display flex
   flex-direction row
   align-items center
-  // border-bottom 1px solid c-neutral-l-2
-  background-color c-neutral-l-4
+  border-bottom 2px solid c-primary
+  background-color c-neutral-l-3
   width 100%
   padding 0 size-5
 
@@ -17,9 +17,15 @@ navbar-links-border-bottom-width = 3px
     line-height 100px
     display inline
     transition background-color ease 0.3s
-    text-decoration none
+    text-decoration underline
+    text-decoration-color c-primary
+    text-underline-position under
     color c-neutral-d-3
     font-weight 400
+    letter-spacing 3px
+
+
+
     &:hover
       background-color c-neutral-l-3
   
